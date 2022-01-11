@@ -17,5 +17,5 @@ namespace LogsSentinel
                 await Task.Delay(1000, stoppingToken);
             }
         }
-    }
-}
+    } // worker
+} // namespace
