@@ -12,7 +12,7 @@ namespace LogsSentinel
     {
         private static string appdataRoamingAddress = Environment.ExpandEnvironmentVariables(@"%AppData%");
         private static string parsecLogFileAddress = $@"{appdataRoamingAddress}\Parsec\log.txt";
-        private List<string> parsecLogLastTwoLines;
+        private List<string> parsecLogLastTwoLines = File.ReadLines(parsecLogFileAddress).Reverse().Take(2).Reverse().ToList();
         private static int second = 1000;
 
         public ParsecLogsMonitor()
