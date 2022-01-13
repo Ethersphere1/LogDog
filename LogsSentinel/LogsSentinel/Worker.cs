@@ -15,12 +15,12 @@ namespace LogsSentinel
             MoonlightTast.Start();
             SunshineTask.Start();
 
-            while (!stoppingToken.IsCancellationRequested)
-            {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                System.Diagnostics.Debug.WriteLine("Inside workder *******************.");
-                await Task.Delay(1000, stoppingToken);
-            }
+            //while (!stoppingToken.IsCancellationRequested)
+            //{
+            //    _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+            //    System.Diagnostics.Debug.WriteLine("Inside workder *******************.");
+            //    await Task.Delay(1000, stoppingToken);
+            //}
         }
 
 
