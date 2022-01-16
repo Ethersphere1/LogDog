@@ -14,6 +14,7 @@ Log.Logger = new LoggerConfiguration()
 
 
 IHost host = Host.CreateDefaultBuilder(args)
+    .UseWindowsService()
     .ConfigureServices(services =>
     {
         services.AddHostedService<Worker>();
