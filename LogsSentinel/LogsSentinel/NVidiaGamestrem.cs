@@ -7,7 +7,7 @@ using Serilog;
 
 namespace LogsSentinel
 {
-    internal class MoonlightLogsMonitor
+    internal class NVidiaGamestrem
     {
         private static string programData = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
         private static string moonLightAddress = $@"{programData}\NVIDIA Corporation\NvStream\NvStreamerCurrent.log";
@@ -17,7 +17,7 @@ namespace LogsSentinel
         private List<string> moonlightLastTwoLines;
         private static int second = 1000;
 
-        public MoonlightLogsMonitor()
+        public NVidiaGamestrem()
         {
             // checking if NvStreamerCurrent.log exists 
             if (File.Exists(moonLightAddress))

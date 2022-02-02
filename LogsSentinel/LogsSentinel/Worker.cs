@@ -31,7 +31,7 @@ namespace LogsSentinel
 
         private Task MoonlightTast = new Task(() =>
         {
-            MoonlightLogsMonitor moonlightLogsMonitor = new MoonlightLogsMonitor();
+            NVidiaGamestrem moonlightLogsMonitor = new NVidiaGamestrem();
         });
 
         private Task SunshineTask = new Task(() =>
