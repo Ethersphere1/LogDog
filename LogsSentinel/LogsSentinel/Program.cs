@@ -9,7 +9,7 @@ Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
     .Enrich.FromLogContext()
-    .WriteTo.File(LogsSentinelDir + @"\LogsSentinelLogs.txt")
+    .WriteTo.File(LogsSentinelDir + @"\LogDog.txt")
     .CreateLogger();
 
 
@@ -18,7 +18,6 @@ IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
     {
         services.AddHostedService<Worker>();
-        //services.AddHostedService<ParsecLogsMonitor>();
     })
     .UseSerilog()
     .Build();
@@ -27,12 +26,12 @@ IHost host = Host.CreateDefaultBuilder(args)
 // executing the script
 try
 {
-    Log.Information("Starting up the LogsSentinel");
+    Log.Information("Starting up the LogDog");
     await host.RunAsync();
 }
 catch (Exception e)
 {
-    Log.Fatal(e, "There was a problem starting the LogsSentinel");
+    Log.Fatal(e, "There was a problem starting the LogDog");
 }
 finally
 {

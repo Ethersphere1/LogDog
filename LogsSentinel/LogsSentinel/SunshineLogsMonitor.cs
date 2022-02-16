@@ -9,10 +9,10 @@ namespace LogsSentinel
 {
     internal class SunshineLogsMonitor
     {
-
         private static string windowsDir = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
         private static string sunshineAddress = $@"{windowsDir}\Temp\sunshine.log";
         private static string currUserDocumentsAddr = Environment.ExpandEnvironmentVariables(@"%HOMEPATH%");
+        private static string tempPathSun = $"{currUserDocumentsAddr}\\Documents\\temp\\sunshine.txt";
 
         private List<string> sunshineAllLines;
         private List<string> sunshineLastTwoLines;
@@ -57,26 +57,26 @@ namespace LogsSentinel
             while (true)
             {
                 // copying sunshine file to script directory
-                string destinationFile = System.AppDomain.CurrentDomain.BaseDirectory + "sunshine.log";
-                if (File.Exists(destinationFile))
+                string sunDestinationFile = System.AppDomain.CurrentDomain.BaseDirectory + "sunshine.log";
+                if (File.Exists(sunDestinationFile))
                 {
-                    File.Delete(destinationFile); // if it already exists delete it to use the updated file
+                    File.Delete(sunDestinationFile); // if it already exists delete it to use the updated file
                 }
                 try
                 {
-                    File.Copy(sunshineAddress, destinationFile, true);
+                    File.Copy(sunshineAddress, sunDestinationFile, true);
                 }
                 catch (IOException iox)
                 {
                     Log.Information(iox.Message);
                 }
-                sunshineAllLines = readAllLines(destinationFile);
+                sunshineAllLines = readAllLines(sunDestinationFile);
 
                 // moonlight log monitoring
                 if (sunshineAllLines.Count < 2)
                 {
                     // do nothing
-                    { }
+                    Log.Information($"sunshine.log found at {sunshineAddress} is empty");
                 }
                 else
                 {
@@ -86,8 +86,7 @@ namespace LogsSentinel
                         Directory.CreateDirectory($"{currUserDocumentsAddr}\\Documents\\temp");
                     }
 
-                    //create/delete 2.txt temp file
-                    string tempPathMoon = $"{currUserDocumentsAddr}\\Documents\\temp\\sunshine.txt";
+                    //create/delete sunshine.txt temp file
 
                     if (sunshineLastTwoLines.Count > 1)
                     {
@@ -98,15 +97,16 @@ namespace LogsSentinel
 
                     //sunshineLastTwoLines = File.ReadLines(sunshineAddress).Reverse().Take(2).Reverse().ToList();
 
-                    if (!sunshineLastTwoLines[0].Contains("GameStream", StringComparison.CurrentCultureIgnoreCase)
-                        && !sunshineLastTwoLines[0].Contains("Client", StringComparison.CurrentCultureIgnoreCase)
-                        && !sunshineLastTwoLines[1].Contains("GameStream", StringComparison.CurrentCultureIgnoreCase)
-                        && !sunshineLastTwoLines[1].Contains("Client", StringComparison.CurrentCultureIgnoreCase))
+                    if (!sunshineLastTwoLines[0].Contains("GameStream Client", StringComparison.CurrentCultureIgnoreCase)
+                        //&& !sunshineLastTwoLines[0].Contains("Client", StringComparison.CurrentCultureIgnoreCase)
+                        && !sunshineLastTwoLines[1].Contains("GameStream Client", StringComparison.CurrentCultureIgnoreCase)
+                        //&& !sunshineLastTwoLines[1].Contains("Client", StringComparison.CurrentCultureIgnoreCase)
+                        )
                     {
-                        if (!File.Exists(tempPathMoon))
+                        if (!File.Exists(tempPathSun))
                         {
                             Thread.Sleep(70);
-                            StreamWriter streamWriter = new StreamWriter(tempPathMoon);
+                            StreamWriter streamWriter = new StreamWriter(tempPathSun);
                             Thread.Sleep(70);
                             if (sunshineLastTwoLines.Count > 1)
                             {
@@ -117,12 +117,14 @@ namespace LogsSentinel
                     } // if
                     else
                     {
-                        File.Delete(tempPathMoon);
+                        File.Delete(tempPathSun);
                         sunshineLastTwoLines.Clear();
                     } // if-else
 
                 } // else
+                //File.Delete(destinationFile);
                 Thread.Sleep(300);
+                
 
             } // while
         } // LogFileTaskInit

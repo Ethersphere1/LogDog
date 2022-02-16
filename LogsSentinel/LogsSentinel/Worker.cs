@@ -12,8 +12,19 @@ namespace LogsSentinel
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             ParsecTask.Start();
+            //var parsecObject = new ParsecLogsMonitor();
+            //var parsecThread = new Thread(parsecObject.ParsecLogFileTask);
+            //parsecThread.Start();
+
             MoonlightTast.Start();
+            //var nvstreamObject = new NVidiaGamestrem();
+            //var nvstreamThread = new Thread(nvstreamObject.NVidiaGamestremLogFileTask);
+            //nvstreamThread.Start();
+
             SunshineTask.Start();
+            //var sunshineObject = new SunshineLogsMonitor();
+            //var sunshineThread = new Thread(sunshineObject.SunshineLogFileTask);
+            //sunshineThread.Start();
 
             //while (!stoppingToken.IsCancellationRequested)
             //{

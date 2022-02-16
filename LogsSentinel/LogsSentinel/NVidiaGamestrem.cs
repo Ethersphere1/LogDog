@@ -10,8 +10,9 @@ namespace LogsSentinel
     internal class NVidiaGamestrem
     {
         private static string programData = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
-        private static string moonLightAddress = $@"{programData}\NVIDIA Corporation\NvStream\NvStreamerCurrent.log";
+        private static string nvStreamerCurrentAddress = $@"{programData}\NVIDIA Corporation\NvStream\NvStreamerCurrent.log";
         private static string currUserDocumentsAddr = Environment.ExpandEnvironmentVariables(@"%HOMEPATH%");
+        private static string tempPathMoon = $"{currUserDocumentsAddr}\\Documents\\temp\\nVidiaGamestream.txt";
 
         private List<string> moonLightAllLines;
         private List<string> moonlightLastTwoLines;
@@ -20,16 +21,28 @@ namespace LogsSentinel
         public NVidiaGamestrem()
         {
             // checking if NvStreamerCurrent.log exists 
-            if (File.Exists(moonLightAddress))
+            if (File.Exists(nvStreamerCurrentAddress))
             {
-                Log.Information($"NvStreamerCurrent.log found at {moonLightAddress}");
-                MoonlightLogFileTask();
+                Log.Information($"NvStreamerCurrent.log found at {nvStreamerCurrentAddress}");
+                NVidiaGamestremLogFileTask();
             }
             else
             {
-                Log.Information($"sunshine.log not found at {moonLightAddress}");
-            }
-        }
+                Log.Information($"{nvStreamerCurrentAddress} not found");
+
+                if (!File.Exists(tempPathMoon))
+                {
+                    Thread.Sleep(70);
+                    StreamWriter streamWriter = new StreamWriter(tempPathMoon);
+                    Thread.Sleep(70);
+                    if (moonlightLastTwoLines.Count > 1)
+                    {
+                        moonlightLastTwoLines.Clear();
+                    }
+                    streamWriter.Close();
+                }
+            } // if-else
+        } // ctor
 
         private static List<string> readAllLines(string path)
         {
@@ -50,12 +63,12 @@ namespace LogsSentinel
             return allLines;
         } // readAllLines
 
-        public void MoonlightLogFileTask()
+        public void NVidiaGamestremLogFileTask()
         {
             moonlightLastTwoLines = new List<string>();
             while (true)
             {
-                moonLightAllLines = readAllLines(moonLightAddress);
+                moonLightAllLines = readAllLines(nvStreamerCurrentAddress);
 
                 // moonlight log monitoring
                 if (moonLightAllLines.Count < 2)
@@ -71,8 +84,7 @@ namespace LogsSentinel
                         Directory.CreateDirectory($"{currUserDocumentsAddr}\\Documents\\temp");
                     }
 
-                    //create/delete 2.txt temp file
-                    string tempPathMoon = $"{currUserDocumentsAddr}\\Documents\\temp\\moonlight.txt";
+                    //create/delete nVidiaGamestream.txt temp file
 
                     if (moonlightLastTwoLines.Count > 1)
                     {
