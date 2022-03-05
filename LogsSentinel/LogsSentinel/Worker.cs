@@ -1,4 +1,4 @@
-namespace LogsSentinel
+namespace LogDog
 {
     public class Worker : BackgroundService
     {
@@ -11,44 +11,24 @@ namespace LogsSentinel
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            ParsecTask.Start();
-            //var parsecObject = new ParsecLogsMonitor();
-            //var parsecThread = new Thread(parsecObject.ParsecLogFileTask);
-            //parsecThread.Start();
-
-            MoonlightTast.Start();
-            //var nvstreamObject = new NVidiaGamestrem();
-            //var nvstreamThread = new Thread(nvstreamObject.NVidiaGamestremLogFileTask);
-            //nvstreamThread.Start();
-
             SunshineTask.Start();
-            //var sunshineObject = new SunshineLogsMonitor();
-            //var sunshineThread = new Thread(sunshineObject.SunshineLogFileTask);
-            //sunshineThread.Start();
-
-            //while (!stoppingToken.IsCancellationRequested)
-            //{
-            //    _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-            //    System.Diagnostics.Debug.WriteLine("Inside workder *******************.");
-            //    await Task.Delay(1000, stoppingToken);
-            //}
+            ParsecTask.Start();
+            MoonlightTast.Start();
         }
 
-
         private Task ParsecTask = new Task(() =>
-        {
-            ParsecLogsMonitor parsecLogsMonitor = new ParsecLogsMonitor();
-        });
+          {
+              ParsecLogsMonitor parsecLogsMonitor = new ParsecLogsMonitor();
+          });
 
         private Task MoonlightTast = new Task(() =>
-        {
-            NVidiaGamestrem moonlightLogsMonitor = new NVidiaGamestrem();
-        });
+          {
+              NVidiaGamestream moonlightLogsMonitor = new NVidiaGamestream();
+          });
 
         private Task SunshineTask = new Task(() =>
-        {
-            SunshineLogsMonitor sunshineLogsMonitor = new SunshineLogsMonitor();
-        });
-
+          {
+              SunshineLogsMonitor sunshineLogsMonitor = new SunshineLogsMonitor();
+          });
     } // worker
 } // namespace
