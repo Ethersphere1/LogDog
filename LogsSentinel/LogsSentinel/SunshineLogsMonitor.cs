@@ -21,8 +21,8 @@ namespace LogDog
 
             try
             {
-                while (true)
-                {
+                //while (true)
+                //{
                     if (File.Exists(sunshineLogPath))
                     {
                         Log.Information($"{sunshineLogFileName} found at {sunshineLogPath}");
@@ -63,7 +63,7 @@ namespace LogDog
                         //Log.Information("here 11");
                     } // if-else
                     Thread.Sleep(150);
-                } // while
+                //} // while
             }
             catch (Exception e)
             {

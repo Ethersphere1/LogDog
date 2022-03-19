@@ -26,6 +26,8 @@ namespace LogDog
                 ParsecLogsMonitor parsecLogsMonitor = new ParsecLogsMonitor();
 
                 SunshineLogsMonitor sunshineLogsMonitor = new SunshineLogsMonitor();
+
+                NVidiaGamestream nVidiaGamestream = new NVidiaGamestream();
             }
 
             //ParsecLogsMonitor parsecLogsMonitor = new ParsecLogsMonitor();

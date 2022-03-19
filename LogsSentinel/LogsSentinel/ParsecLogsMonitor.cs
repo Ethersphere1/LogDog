@@ -63,8 +63,8 @@ namespace LogDog
                     }
                     //Log.Information("here 14");
                 } // if-else
-                  //Thread.Sleep(150);
-                  //} // while
+                Thread.Sleep(150);
+                //} // while
             }
             catch (Exception e)
             {
