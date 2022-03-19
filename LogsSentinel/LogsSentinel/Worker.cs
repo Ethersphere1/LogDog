@@ -41,22 +41,22 @@ namespace LogDog
         //    parsecLogsMonitor.ParsecLogsMonitorAsync();
         //}
 
-        private Task ParsecTask = new Task(() =>
-          {
-              //Log.Information("here 15");
-              ParsecLogsMonitor parsecLogsMonitor = new ParsecLogsMonitor();
-          });
+        //private Task ParsecTask = new Task(() =>
+        //  {
+        //      //Log.Information("here 15");
+        //      ParsecLogsMonitor parsecLogsMonitor = new ParsecLogsMonitor();
+        //  });
 
-        private Task MoonlightTast = new Task(() =>
-          {
-              //Log.Information("here 16");
-              NVidiaGamestream moonlightLogsMonitor = new NVidiaGamestream();
-          });
+        //private Task MoonlightTast = new Task(() =>
+        //  {
+        //      //Log.Information("here 16");
+        //      NVidiaGamestream moonlightLogsMonitor = new NVidiaGamestream();
+        //  });
 
-        private Task SunshineTask = new Task(() =>
-          {
-              //Log.Information("here 17");
-              SunshineLogsMonitor sunshineLogsMonitor = new SunshineLogsMonitor();
-          });
+        //private Task SunshineTask = new Task(() =>
+        //  {
+        //      //Log.Information("here 17");
+        //      SunshineLogsMonitor sunshineLogsMonitor = new SunshineLogsMonitor();
+        //  });
     } // worker
 } // namespace
