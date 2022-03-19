@@ -23,10 +23,13 @@ namespace LogDog
             {
                 while (true)
                 {
+                    //Log.Information("here 5");
                     if (File.Exists(nvLogFilePath))
                     {
                         Log.Information($"{nvLogFileName} found at {nvLogFilePath}");
                         loggerBase.LogFileTask();
+                        //Log.Information("Here 6");
+
                     }
                     else
                     {
@@ -36,7 +39,10 @@ namespace LogDog
                         if (!File.Exists(tempFilePath))
                         {
                             loggerBase.CreateTempFile();
+                            //Log.Information("Here 7");
                         }
+                        //Log.Information("Here 8");
+
                     } // if-else
                     Thread.Sleep(150);
                 } // while

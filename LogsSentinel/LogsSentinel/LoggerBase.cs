@@ -38,7 +38,13 @@ namespace LogDog
             this.outputTempFileName = outputTempFileName;
 
             tempFilePath = Path.Combine(tempDirPath, outputTempFileName);
+            //Log.Information("Here 3");
         } // ctor
+
+        public void LogFileTextFind()
+        {
+
+        }
 
         public void LogFileTask()
         {
@@ -56,8 +62,12 @@ namespace LogDog
                 if (!File.Exists(tempFilePath))
                 {
                     CreateTempFile();
+                } else
+                {
+                    Log.Information($"{tempFilePath} already exists, program should not delete it");
                 }
             }
+
         } // LogFileTask
 
         private byte[] CopyLogFile()
@@ -84,7 +94,8 @@ namespace LogDog
         {
             if (!File.Exists(tempFilePath))
             {
-                Thread.Sleep(70);
+                Log.Information($"file {tempFilePath} doesn't exist");
+                //Thread.Sleep(70);
                 StreamWriter streamWriter = new StreamWriter(tempFilePath);
                 Thread.Sleep(70);
                 streamWriter.Close();
