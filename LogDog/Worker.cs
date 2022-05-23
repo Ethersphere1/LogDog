@@ -23,6 +23,8 @@ namespace LogDog
 
             while (true)
             {
+
+
                 ParsecLogsMonitor parsecLogsMonitor = new ParsecLogsMonitor();
 
                 SunshineLogsMonitor sunshineLogsMonitor = new SunshineLogsMonitor();

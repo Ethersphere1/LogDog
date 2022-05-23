@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogDog", "LogDog\LogDog.csproj", "{AAEF189B-7C48-49D3-B43D-801CA9D40C7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogDogBase", "LogDogBase\LogDogBase.csproj", "{1CD31A49-DCA0-430B-B242-6504D9472A61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogDogBase", "LogDogBase\LogDogBase.csproj", "{1CD31A49-DCA0-430B-B242-6504D9472A61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogDogCLI", "LogDogCLI\LogDogCLI.csproj", "{81FA07BA-8089-47B4-9A12-02C3F4E615F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1CD31A49-DCA0-430B-B242-6504D9472A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CD31A49-DCA0-430B-B242-6504D9472A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CD31A49-DCA0-430B-B242-6504D9472A61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81FA07BA-8089-47B4-9A12-02C3F4E615F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81FA07BA-8089-47B4-9A12-02C3F4E615F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81FA07BA-8089-47B4-9A12-02C3F4E615F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81FA07BA-8089-47B4-9A12-02C3F4E615F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
