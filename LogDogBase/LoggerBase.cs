@@ -14,9 +14,10 @@ namespace LogDogBase
             return b1.Length == b2.Length && memcmp(b1, b2, b1.Length) == 0;
         } // ByteArrayCompare
 
-        private static string currUserDocumentsAddr = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        public string tempDirPath = Path.Combine(currUserDocumentsAddr, "temp");
-        private static string? tempFilePath;
+        //private static string currUserDocumentsAddr = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        //public string tempDirPath = Path.Combine(currUserDocumentsAddr, "temp");
+
+        private string? tempFilePath;
 
         private string? logFileAddress;
         private string? outputLogFileName;
@@ -24,26 +25,23 @@ namespace LogDogBase
 
         private int sleepBetweenLogCopy = 1000;
 
-        public LoggerBase(string logFileAddress, string outputLogFileName, string outputTempFileName)
+        public LoggerBase(string logFileAddress, string outputLogFileName, string outputTempFileName, string tempFilePath)
         {
             // check if temp folder in documents exists
-            if (!Directory.Exists(tempDirPath))
-            {
-                Directory.CreateDirectory(tempDirPath);
-            }
+            //if (!Directory.Exists(tempDirPath))
+            //{
+            //    Directory.CreateDirectory(tempDirPath);
+            //}
 
             this.logFileAddress = logFileAddress;
             this.outputLogFileName = outputLogFileName;
             this.outputTempFileName = outputTempFileName;
 
-            tempFilePath = Path.Combine(tempDirPath, outputTempFileName);
+            //tempFilePath = Path.Combine(tempDirPath, outputTempFileName);
+            this.tempFilePath = tempFilePath;
+            //tempFilePath = Path.Combine(tempDirPath, outputTempFileName);
             //Log.Information("Here 3");
         } // ctor
-
-        public void LogFileTextFind()
-        {
-
-        }
 
         public void LogFileTask()
         {

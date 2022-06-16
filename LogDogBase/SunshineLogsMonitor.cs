@@ -15,8 +15,9 @@ namespace LogDogBase
 
         public SunshineLogsMonitor()
         {
-            loggerBase = new LoggerBase(sunshineLogPath, sunshineLogFileName, outputTempFileName);
-            string tempFilePath = Path.Combine(loggerBase.tempDirPath, outputTempFileName);
+            //loggerBase = new LoggerBase(sunshineLogPath, sunshineLogFileName, outputTempFileName);
+            //string tempFilePath = Path.Combine(loggerBase.tempDirPath, outputTempFileName);
+            string tempFilePath = "";
             int linesToTake = 500;
 
             try

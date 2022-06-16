@@ -3,5 +3,5 @@
 //Console.WriteLine("Hello, World!");
 
 LDBase ll = new LDBase();
-ll.hello();
+ll.baseInit();
 
