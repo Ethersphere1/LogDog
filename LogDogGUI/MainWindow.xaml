@@ -15,17 +15,17 @@
         <Path Stretch="Uniform" 
               Margin="0,5,0,0" 
               VerticalAlignment="Top" 
-              Fill="Black"
+              Fill="#0DCA86"
               Height="25" Width="25" 
               Data="{StaticResource ethersphereIcon}"  />
         
-        <ListBox Grid.Column="0" x:Name="sidebar" Margin="0, 50, 0, 50" BorderThickness="0">
+        <ListBox Grid.Column="0" x:Name="sidebar" SelectionChanged="sidebar_SelectionChanged" SelectionMode="Single" Margin="0, 50, 0, 50" BorderThickness="0">
             <local:NavButton Margin="3" Padding="6" Icon="{StaticResource playButton}"/>
-            <local:NavButton Margin="3" Padding="6" Icon="{StaticResource settingsButton}"/>
-            <local:NavButton Margin="3" Padding="6" Icon="{StaticResource moonButton}"/>
+            <local:NavButton NavLink="/Pages/Page1.xaml" Margin="3" Padding="6" Icon="{StaticResource settingsButton}"/>
+            <local:NavButton NavLink="/Pages/Page2.xaml" Margin="3" Padding="6" Icon="{StaticResource moonButton}"/>
         </ListBox>
 
-        <!--<Frame Grid.Column="1" x:Name="navframe" Background="#e9ecef"/>-->
+        <Frame Grid.Column="1" x:Name="navframe" NavigationUIVisibility="Hidden" Background="#e9ecef"/>
 
     </Grid>
 </Window>
